@@ -1,0 +1,93 @@
+<mat-card
+  *ngIf="cart.items.length"
+  class="max-w-7xl min-h-full mx-auto border-x"
+>
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 w-full">
+    <ng-container matColumnDef="product">
+      <th mat-header-cell *matHeaderCellDef>Product</th>
+      <td mat-cell *matCellDef="let el">
+        <img src="{{ el.product }}" alt="product" class="w-[100px] my-5" />
+      </td>
+      <td mat-footer-cell *matFooterCellDef>
+        <button mat-flat-button routerLink="/home" color="primary">
+          Continue Shopping
+        </button>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>Name</th>
+      <td mat-cell *matCellDef="let el">
+        <p class="truncate max-w-xs block">{{ el.name }}</p>
+      </td>
+      <td mat-footer-cell *matFooterCellDef></td>
+    </ng-container>
+    <ng-container matColumnDef="price">
+      <th mat-header-cell *matHeaderCellDef>Price</th>
+      <td mat-cell *matCellDef="let el">
+        <span class="truncate max-w-xs">{{ el.price | currency }}</span>
+      </td>
+      <td mat-footer-cell *matFooterCellDef></td>
+    </ng-container>
+    <ng-container matColumnDef="quantity">
+      <th mat-header-cell *matHeaderCellDef>Quantity</th>
+      <td mat-cell *matCellDef="let el">
+        <button mat-icon-button (click)="onRemoveQty(el)">
+          <mat-icon>remove</mat-icon>
+        </button>
+        <span class="truncate max-w-xs inline-block align-middle">{{
+          el.quantity
+        }}</span>
+        <button (click)="onAddQty(el)" mat-icon-button>
+          <mat-icon>add</mat-icon>
+        </button>
+      </td>
+      <td mat-footer-cell *matFooterCellDef></td>
+    </ng-container>
+    <ng-container matColumnDef="total">
+      <th mat-header-cell *matHeaderCellDef>Total</th>
+      <td mat-cell *matCellDef="let el">
+        <p class="truncate max-w-xs">{{ el.quantity * el.price | currency }}</p>
+      </td>
+      <td mat-footer-cell *matFooterCellDef>
+        <span class="font-bold py-5 block">{{
+          getTotal(cart.items) | currency
+        }}</span>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="action">
+      <th mat-header-cell *matHeaderCellDef>
+        <button mat-flat-button color="warn" (click)="onClearCart()">
+          Clear All
+        </button>
+      </th>
+      <td mat-cell *matCellDef="let el">
+        <button
+          mat-mini-fab
+          color="warn"
+          class="float-right"
+          (click)="onRemoveProduct(el)"
+        >
+          <mat-icon>close</mat-icon>
+        </button>
+      </td>
+      <td mat-footer-cell *matFooterCellDef>
+        <button mat-flat-button color="primary" class="float-right">
+          Proceed To Checkout
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    <tr mat-footer-row *matFooterRowDef="displayedColumns"></tr>
+  </table>
+</mat-card>
+<mat-card *ngIf="!cart.items.length" class="max-w-7xl"
+  ><p>
+    Your Cart is empty.
+    <button mat-flat-button color="primary" routerLink="/home">
+      Start Shopping
+    </button>
+  </p>
+</mat-card>
