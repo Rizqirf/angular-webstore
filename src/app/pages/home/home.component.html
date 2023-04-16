@@ -6,6 +6,7 @@
     <app-filters (showCategory)="onShowCategory($event)"></app-filters>
   </mat-drawer>
   <mat-drawer-content class="p-6">
+    <app-banner></app-banner>
     <app-products-header
       (columnsCountChange)="onColumnsCountChange($event)"
       (sortChange)="onSortChange($event)"

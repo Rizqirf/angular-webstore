@@ -16,6 +16,7 @@ import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatTableModule } from "@angular/material/table";
 import { MatBadgeModule } from "@angular/material/badge";
 import { MatSnackBarModule } from "@angular/material/snack-bar";
+import { MatDialogModule } from "@angular/material/dialog";
 import { HeaderComponent } from "./components/header/header.component";
 import { HomeComponent } from "./pages/home/home.component";
 import { ProductsHeaderComponent } from "./pages/home/components/products-header/products-header.component";
@@ -27,6 +28,10 @@ import { MatTreeModule } from "@angular/material/tree";
 import { CartService } from "./services/cart.service";
 import { StoreService } from "./services/store.service";
 import { HttpClientModule } from "@angular/common/http";
+import { BannerComponent } from "./pages/home/components/banner/banner.component";
+import { BannerFormComponent } from "./pages/banner-form/banner-form.component";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { RouterModule } from "@angular/router";
 
 @NgModule({
   declarations: [
@@ -37,6 +42,8 @@ import { HttpClientModule } from "@angular/common/http";
     FiltersComponent,
     ProductBoxComponent,
     CartComponent,
+    BannerComponent,
+    BannerFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -56,6 +63,10 @@ import { HttpClientModule } from "@angular/common/http";
     MatBadgeModule,
     MatSnackBarModule,
     HttpClientModule,
+    MatDialogModule,
+    FormsModule,
+    ReactiveFormsModule,
+    RouterModule,
   ],
   providers: [CartService, StoreService],
   bootstrap: [AppComponent],

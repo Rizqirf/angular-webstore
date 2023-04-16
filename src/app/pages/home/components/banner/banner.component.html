@@ -1,0 +1,86 @@
+<mat-card class="mb-4 flex align-center container" *ngIf="banner">
+  <ng-container
+    class="flex justify-between"
+    #outlet
+    [ngTemplateOutlet]="content"
+  >
+  </ng-container>
+</mat-card>
+
+<ng-template #content>
+  <div
+    style="width: 100%; height: 12rem"
+    [style.background]="'url(' + banner.image_banner + ')'"
+    data-modal-target="defaultModal"
+    data-modal-toggle="defaultModal"
+  >
+    <div>
+      <button
+        type="button"
+        class="absolute top-0 left-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+        (click)="changeBanner(false)"
+      >
+        <span
+          class="inline-flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none"
+        >
+          <svg
+            aria-hidden="true"
+            class="w-5 h-5 text-white sm:w-6 sm:h-6 dark:text-gray-800"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M15 19l-7-7 7-7"
+            ></path>
+          </svg>
+          <span class="sr-only">Previous</span>
+        </span>
+      </button>
+      <button
+        type="button"
+        class="absolute top-0 right-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+        (click)="changeBanner(true)"
+      >
+        <span
+          class="inline-flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none"
+        >
+          <svg
+            aria-hidden="true"
+            class="w-5 h-5 text-white sm:w-6 sm:h-6 dark:text-gray-800"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M9 5l7 7-7 7"
+            ></path>
+          </svg>
+          <span class="sr-only">Next</span>
+        </span>
+      </button>
+    </div>
+    <button (click)="openDialog()">
+      <div
+        class="bg-slate-900/75 absolute bottom-0 right-0"
+        style="width: 20rem; height: 5rem"
+      >
+        <h2 class="text-gray-50 font-medium">{{ banner.title }}</h2>
+
+        <p class="text-gray-50">
+          {{ formatDate(banner.start_time) }} -
+          {{ formatDate(banner.end_time) }}
+        </p>
+        <p class="text-gray-50 font-light">click for more information</p>
+      </div>
+    </button>
+  </div>
+</ng-template>

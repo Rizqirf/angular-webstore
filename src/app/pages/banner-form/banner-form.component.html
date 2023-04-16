@@ -1,0 +1,80 @@
+<mat-card class="max-w-7xl min-h-full mx-auto border-x">
+  <div class="place-self-center border p-5 my-40">
+    <div class="grid grid-cols-3 gap-4 form-group my-5">
+      <div class="col-span-3">
+        <div class="text-4xl">Property Promotion Form</div>
+      </div>
+    </div>
+    <form [formGroup]="myForm" (ngSubmit)="onClickSubmit()" class="pl-8">
+      <div class="grid grid-cols-3 gap-4 form-group">
+        <div class="col-span-1 text-lg">Title</div>
+        <div class="col-span-2 text-lg">
+          :
+          <input
+            class="form-control"
+            type="text"
+            formControlName="Title"
+            placeholder="title"
+          />
+        </div>
+      </div>
+      <div class="grid grid-cols-3 gap-4 form-group">
+        <div class="col-span-1 text-lg">Image</div>
+        <div class="col-span-2 text-lg">
+          :
+          <input
+            class="form-control"
+            type="url"
+            formControlName="Image_Banner"
+            placeholder="image_banner"
+          />
+        </div>
+      </div>
+      <div class="grid grid-cols-3 gap-4 form-group">
+        <div class="col-span-1 text-lg">Description</div>
+        <div class="col-span-2 text-lg">
+          :
+          <input
+            class="form-control"
+            type="text"
+            formControlName="Description"
+            placeholder="description"
+          />
+        </div>
+      </div>
+      <div class="grid grid-cols-3 gap-4 form-group">
+        <div class="col-span-1 text-lg">Start Time</div>
+        <div class="col-span-2 text-lg">
+          :
+          <input
+            class="form-control"
+            type="date"
+            formControlName="Start_Time"
+            placeholder="start_time"
+          />
+        </div>
+      </div>
+      <div class="grid grid-cols-3 gap-4 form-group">
+        <div class="col-span-1 text-lg">End Time</div>
+        <div class="col-span-2 text-lg">
+          :
+          <input
+            class="form-control"
+            type="date"
+            formControlName="End_Time"
+            placeholder="end_time"
+          />
+        </div>
+      </div>
+
+      <div class="flex my-5">
+        <button
+          class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          type="submit"
+        >
+          Submit
+        </button>
+      </div>
+    </form>
+  </div>
+</mat-card>
